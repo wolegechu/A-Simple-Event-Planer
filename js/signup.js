@@ -2,7 +2,6 @@ var nameInput = document.querySelector('#inputName');
 var emailInput = document.querySelector('#inputEmail');
 var passwordInput = document.querySelector('#inputPassword');
 var repeatPasswordInput = document.querySelector('#inputRepeatPassword');
-var birthdayInput = document.querySelector('#InputBirthday');
 
 var submit = document.querySelector('#submit');
 
@@ -43,6 +42,7 @@ submit.onclick = function(){
 				displayName : nameInput.value
 			}).then(function(){
 				alert('Success!Now you can use the Planner.');
+				self.location.href = 'app.html';
 			});
 		}else{
 			alert('Failed,please try again.');

@@ -9,4 +9,5 @@
 
 ### Introduction
 	Run `<npm install>` first.
+	Then run `<gulp>` in the terminal to start the local server.It's necessary because the Firebase must run on 'localhost'.
 	The index.html is the web page for login.Before login,you should register a new account in 'signup.html'.Then you'll enter 'app.html',where you can create events and see the events that you have already created.I use Firebase for authentication and database.

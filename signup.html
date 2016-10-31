@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <title>Sign Up - Meet-Up Event Planner</title>
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2 class="panel-title">Please Sign Up</h2></div>
+			<div class="panel-body">
+				<form role="form">
+					<div class="form-group">
+						<label for="inputName">Name</label>
+						<input type="text" class="form-control" id="inputName" placeholder="your full name" autofocus required autocomplete="cc-name">
+					</div>
+					<div class="form-group">
+						<label for="inputEmail">Email</label>
+						<input type="email" class="form-control" id="inputEmail" placeholder="name@example.com" required autocomplete="email">
+					</div>
+					<div class="form-group">
+						<label for="inputPassword">Password</label>
+						<input type="password" class="form-control" id="inputPassword" placeholder="password">
+						<p class="help-block">16-30 characters and at least lowercase and uppercase letter</p>
+					</div>
+					<div class="form-group">
+						<label for="inputRepeatPassword">Repeat Password</label>
+						<input type="password" class="form-control" id="inputRepeatPassword" placeholder="password">
+					</div>
+					<div class="form-group">
+						<label for="inputBirthday">Birthday</label>
+						<input type="datetime-local" class="form-control" id="inputBirthday" required>
+					</div>
+					<a type="submit" class="btn btn-primary" id="submit">Sign Up</a>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+	<script>
+	// Initialize Firebase
+		var config = {
+			apiKey: 'AIzaSyBptN7SegLfCk8eWCK76FGzFU7fG6sapqQ',
+			authDomain: 'udacity-799b8.firebaseapp.com',
+			databaseURL: 'https://udacity-799b8.firebaseio.com',
+			storageBucket: 'udacity-799b8.appspot.com',
+			messagingSenderId: '649074439509'
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script src="js/signup.js"></script>
+</body>
+</html>

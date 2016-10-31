@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <title>Meet-Up Event Planner</title>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Create New Event</h3></div>
+            <div class="panel-body">
+                <form action="">
+                    <div class="form-group"><label for="inputEventName">Event Name</label>
+                        <input type="text" class="form-control" id="inputEventName" placeholder="event name" autofocus required>
+                    </div>
+                    <div class="form-group"><label for="inputType">Event Type</label>
+                        <select name="eventType" id="inputType" class="form-control">
+                            <option value="birthday party">birthday party</option>
+                            <option value="conference talk">conference talk</option>
+                            <option value="wedding">wedding</option>
+                            <option value="etc">etc</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label for="inputHost">Host</label>
+                        <input type="text" class="form-control" id="inputHost" placeholder="individuals'name or organization">
+                    </div>
+                    <div class="form-group"><label for="inputStartTime">Start Time</label>
+                        <input type="datetime-local" class="form-control" id="inputStartTime" placeholder="2016-10-12T15:04">
+                    </div>
+                    <div class="form-group"><label for="inputEndTime">End Time</label>
+                        <input type="datetime-local" class="form-control" id="inputEndTime" placeholder="2016-10-12T15:04">
+                    </div>
+                    <div class="form-group"><label for="inputGuestList">Guest List</label>
+                        <input type="text" class="form-control" id="inputGuestList" placeholder="guest list">
+                    </div>
+                    <div class="form-group"><label for="inputLocation">Location</label>
+                        <input type="text" class="form-control" id="inputLocation" placeholder="location">
+                    </div>
+                    <div class="form-group"><label for="inputComment">Comment</label>
+                        <input type="text" class="form-control" id="inputComment" placeholder="comment">
+                    </div>
+                    <a class="btn btn-default btn-lg" style="float: right;" id="submit">Create</a>
+                </form>
+
+            </div>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-triped" >
+                <thead><tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Host</th>
+                    <th>Start Time</th>
+                    <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody id="tableEvents">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: 'AIzaSyBptN7SegLfCk8eWCK76FGzFU7fG6sapqQ',
+            authDomain: 'udacity-799b8.firebaseapp.com',
+            databaseURL: 'https://udacity-799b8.firebaseio.com',
+            storageBucket: 'udacity-799b8.appspot.com',
+            messagingSenderId: '649074439509'
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="js/app.js"></script>
+</body>
+</html>

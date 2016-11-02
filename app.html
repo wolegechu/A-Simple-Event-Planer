@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/dist/css/app.css">
     <title>Meet-Up Event Planner</title>
 </head>
 <body>
@@ -14,36 +14,40 @@
             <div class="panel-heading"><h3 class="panel-title">Create New Event</h3></div>
             <div class="panel-body">
                 <form action="">
-                    <div class="form-group"><label for="inputEventName">Event Name</label>
+                    <div class="form-group"><label class="control-label" for="inputEventName" id="labelEventName">Event Name</label>
                         <input type="text" class="form-control" id="inputEventName" placeholder="event name" autofocus required>
                     </div>
-                    <div class="form-group"><label for="inputType">Event Type</label>
-                        <select name="eventType" id="inputType" class="form-control">
-                            <option value="birthday party">birthday party</option>
-                            <option value="conference talk">conference talk</option>
-                            <option value="wedding">wedding</option>
-                            <option value="etc">etc</option>
-                        </select>
+                    <div class="form-group">
+                        <label class="control-label" id="labelType" for="inputType">Event Type</label> 
+                        <input id="inputType" list="listType" name="eventType" class="form-control" />
+                        <datalist id="listType">
+                            <option value="birthday party">
+                            <option value="conference talk">
+                            <option value="wedding">
+                            <option value="etc">
+                        </datalist>
+
                     </div>
-                    <div class="form-group"><label for="inputHost">Host</label>
-                        <input type="text" class="form-control" id="inputHost" placeholder="individuals'name or organization">
+                    <div class="form-group"><label class="control-label" for="inputHost" id="labelHost">Host</label>
+                        <input type="text" class="form-control" id="inputHost" placeholder="individuals'name or organization" required>
                     </div>
-                    <div class="form-group"><label for="inputStartTime">Start Time</label>
-                        <input type="datetime-local" class="form-control" id="inputStartTime" placeholder="2016-10-12T15:04">
+                    <div class="form-group"><label class="control-label" for="inputStartTime" id="labelStartTime">Start Time</label>
+                        <input type="datetime-local" class="form-control" id="inputStartTime" placeholder="2016-10-12T15:04" required>
                     </div>
-                    <div class="form-group"><label for="inputEndTime">End Time</label>
-                        <input type="datetime-local" class="form-control" id="inputEndTime" placeholder="2016-10-12T15:04">
+                    <div class="form-group"><label class="control-label" for="inputEndTime" id="labelEndTime">End Time</label>
+                        <input type="datetime-local" class="form-control" id="inputEndTime" placeholder="2016-10-12T15:04" required>
                     </div>
-                    <div class="form-group"><label for="inputGuestList">Guest List</label>
-                        <input type="text" class="form-control" id="inputGuestList" placeholder="guest list">
+                    <div class="form-group"><label class="control-label" for="inputGuestList" id="labelGuestList">Guest List</label>
+                        <input type="text" class="form-control" id="inputGuestList" placeholder="guest list" required>
                     </div>
-                    <div class="form-group"><label for="inputLocation">Location</label>
-                        <input type="text" class="form-control" id="inputLocation" placeholder="location">
+                    <div class="form-group"><label class="control-label" for="inputLocation" id="labelLocation">Location</label>
+                        <input type="text" class="form-control" id="inputLocation" placeholder="location" required>
                     </div>
-                    <div class="form-group"><label for="inputComment">Comment</label>
-                        <input type="text" class="form-control" id="inputComment" placeholder="comment">
+                    <div class="form-group"><label class="control-label" for="inputComment" id="labelComment">Comment</label>
+                        <input type="text" class="form-control" id="inputComment" placeholder="comment" required>
                     </div>
-                    <a class="btn btn-default btn-lg" style="float: right;" id="submit">Create</a>
+                    <section data-route="message" style="margin-top: 15px"></section>
+                    <button class="btn btn-default btn-lg" style="float: right;" type="button" id="submit">Create </button>
                 </form>
 
             </div>
@@ -76,6 +80,6 @@
         };
         firebase.initializeApp(config);
     </script>
-    <script src="js/app.js"></script>
+    <script src="./dist/js/min/app.js"></script>
 </body>
 </html>

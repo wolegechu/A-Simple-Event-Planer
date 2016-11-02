@@ -5,38 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/dist/css/app.css">
     <title>Login - Meet-Up Event Planner</title>
 </head>
 <body>
     <div class="container">
         <form class="form-signin" action="">
             <h2 class="form-singnin-heading">Please sign in</h2>
+            <section data-route="home"></section>
             <label for="inputEmail">Email address</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus>
             <label for="inputPassword">Password</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-lg btn-primary btn-block" href="signup.html" style="margin-bottom: 10px;">Signup</a>
+                    <a class="btn btn-lg btn-default btn-block" href="signup.html" style="margin-bottom: 10px;">Signup</a>
                 </div>
-                <div class="col-md-6"><a class="btn btn-lg btn-info btn-block" id="submit" type="submit">Login</a></div>
+                <div class="col-md-6"><button class="btn btn-lg btn-info btn-block" id="submit" type="button">Login</button></div>
             </div>
-            
+        
         </form>
     </div>
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
     <script>
-    // Initialize Firebase
-        var config = {
-            apiKey: 'AIzaSyBptN7SegLfCk8eWCK76FGzFU7fG6sapqQ',
-            authDomain: 'udacity-799b8.firebaseapp.com',
-            databaseURL: 'https://udacity-799b8.firebaseio.com',
-            storageBucket: 'udacity-799b8.appspot.com',
-            messagingSenderId: '649074439509'
-        };
-        firebase.initializeApp(config);
+// Initialize Firebase
+	var config = { apiKey: 'AIzaSyBptN7SegLfCk8eWCK76FGzFU7fG6sapqQ', authDomain: 'udacity-799b8.firebaseapp.com', databaseURL: 'https://udacity-799b8.firebaseio.com', storageBucket: 'udacity-799b8.appspot.com', messagingSenderId: '649074439509' }; 
+	firebase.initializeApp(config); 
     </script>
-    <script src="js/login.js"></script>
+    <script src="/dist/js/min/login.js"></script>
 </body>
 </html>

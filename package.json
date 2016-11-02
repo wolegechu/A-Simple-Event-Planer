@@ -1,16 +1,18 @@
 {
   "name": "udacity-p1",
   "version": "1.0.0",
-  "description": "",
+  "description": "Run `<npm install>` first. \tThen run `<gulp>` in the terminal to start the local server.Because it's necessary because the Firebase must run on 'localhost'. \tYou should register an account first.",
   "main": "gulpfile.js",
   "dependencies": {
+    "eslint": "^3.9.1",
     "bootstrap": "^3.3.7",
     "browser-sync": "^2.17.5",
     "gulp-autoprefixer": "^3.1.1",
-    "eslint": "^3.8.1",
+    "gulp-eslint": "^3.0.1",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2",
-    "gulp-eslint": "^3.0.1"
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-sass": "^2.3.2"
   },
   "devDependencies": {},
   "scripts": {

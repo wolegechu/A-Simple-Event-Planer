@@ -33,10 +33,10 @@ emailInput.addEventListener('input' , function(){
 
 passwordInput.addEventListener('input' , function(){
 	var password = passwordInput.value;
-	if(password.length < 16){
-		setValidityMsg(labelPassword,0,'Password (fewer than 16 characters)');
-	}else if(password.length > 30){
-		setValidityMsg(labelPassword,0,'Password (greater than 30 characters)');
+	if(password.length < 10){
+		setValidityMsg(labelPassword,0,'Password (fewer than 10 characters)');
+	}else if(password.length > 20){
+		setValidityMsg(labelPassword,0,'Password (greater than 20 characters)');
 	}else if(!password.match(/[a-z]/g)){
 		setValidityMsg(labelPassword,0,'Password (missing a lowercase letter)');
 	}else if(!password.match(/[A-Z]/g)){
@@ -77,10 +77,10 @@ nameInput.addEventListener('input' , function(){
 
 
 function checkRequirements(password){
-	if (password.length < 16) {
-		return passwordInput.setCustomValidity('fewer than 16 characters');
-	}else if(password.length > 30){
-		return passwordInput.setCustomValidity('greater than 30 characters');
+	if (password.length < 10) {
+		return passwordInput.setCustomValidity('fewer than 10 characters');
+	}else if(password.length > 20){
+		return passwordInput.setCustomValidity('greater than 20 characters');
 	}
 
 	if (!password.match(/[a-z]/g)) {
@@ -113,13 +113,10 @@ submit.onclick = function(){
 			user.updateProfile({
 				displayName : nameInput.value
 			}).then(function(){
-				
 				message.innerHTML = '<div class="alert alert-success" role="alert">Success</div>';
 				setTimeout(function(){
 					self.location.href = 'app.html';
 				},1500);
-
-				
 			});
 		}else{
 			message.innerHTML = '<div class="alert alert-danger" role="alert">Failed,please try again</div>';

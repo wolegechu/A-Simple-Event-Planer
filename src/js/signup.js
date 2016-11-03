@@ -4,10 +4,11 @@ var passwordInput = document.querySelector('#inputPassword');
 var repeatPasswordInput = document.querySelector('#inputRepeatPassword');
 
 var submit = document.querySelector('#submit');
+var message = document.querySelector('section[data-route="message"]');
 
 
 submit.onclick = function(){
-	function checkRequirements(){
+	function checkRequirements(password){
 		if (password.length < 16) {
 			return passwordInput.setCustomValidity('fewer than 16 characters');
 		}else if(password.length > 30){
@@ -23,15 +24,18 @@ submit.onclick = function(){
 		}
 	}
 
+	
+
 	var password = passwordInput.value;
 	var repeatPassword = repeatPasswordInput.value;
 
-	if (password === repeatPassword) {
-		checkRequirements();
-	} else {
-		return repeatPasswordInput.setCustomValidity('the password must match');
-	}
+	checkRequirements(password);
 
+	if (password !== repeatPassword) {
+		return repeatPasswordInput.setCustomValidity('the password must match');
+	} 
+	
+	
 	firebase.auth().createUserWithEmailAndPassword(emailInput.value,password).catch(function(error){
 		
 	});
@@ -41,11 +45,16 @@ submit.onclick = function(){
 			user.updateProfile({
 				displayName : nameInput.value
 			}).then(function(){
-				alert('Success!Now you can use the Planner.');
-				self.location.href = 'app.html';
+				
+				message.innerHTML = '<div class="alert alert-success" role="alert">Success</div>';
+				setTimeout(function(){
+					self.location.href = 'app.html';
+				},1500);
+
+				
 			});
 		}else{
-			alert('Failed,please try again.');
+			message.innerHTML = '<div class="alert alert-danger" role="alert">Failed,please try again</div>';
 		}
 	});
 

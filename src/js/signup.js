@@ -2,7 +2,6 @@ var nameInput = document.querySelector('#inputName');
 var emailInput = document.querySelector('#inputEmail');
 var passwordInput = document.querySelector('#inputPassword');
 var repeatPasswordInput = document.querySelector('#inputRepeatPassword');
-var birthdayInput = document.querySelector('#inputBirthday');
 
 var submit = document.querySelector('#submit');
 var message = document.querySelector('section[data-route="message"]');
@@ -11,7 +10,8 @@ var labelName = document.querySelector('#labelName');
 var labelEmail = document.querySelector('#labelEmail');
 var labelPassword = document.querySelector('#labelPassword');
 var labelRepeatPassword = document.querySelector('#labelRepeatPassword');
-var labelBirthday = document.querySelector('#labelBirthday');
+
+var startValidity = false,endValidity = false;
 
 function setValidityMsg(label,type,message){
 	label.innerHTML = message;
@@ -24,10 +24,10 @@ function setValidityMsg(label,type,message){
 }
 
 emailInput.addEventListener('input' , function(){
-	if(emailInput.value.length > 1){
+	if(emailInput.validationMessage.length === 0){
 		setValidityMsg(labelEmail,1,'Email');
 	}else{
-		setValidityMsg(labelEmail,0,'Email (required)');
+		setValidityMsg(labelEmail,0,'Email (' + emailInput.validationMessage + ')');
 	}
 });
 
@@ -54,74 +54,49 @@ repeatPasswordInput.addEventListener('input' , function(){
 	}
 });
 
-birthdayInput.addEventListener('input' , function(){
-	if(birthdayInput.value.length > 1){
-		setValidityMsg(labelBirthday,1,'Birthday');
-	}else{
-		setValidityMsg(labelBirthday,0,'Birthday (required)');
-	}
-});
-
 nameInput.addEventListener('input' , function(){
 	if(nameInput.value.length > 1){
 		setValidityMsg(labelName,1,'Name');
-		validation = true;
 	}else{
 		setValidityMsg(labelName,0,'Name (required)');
-		validation = false;
 	}
 });
 
-
-
-
-
-function checkRequirements(password){
-	if (password.length < 10) {
-		return passwordInput.setCustomValidity('fewer than 10 characters');
-	}else if(password.length > 20){
-		return passwordInput.setCustomValidity('greater than 20 characters');
-	}
-
-	if (!password.match(/[a-z]/g)) {
-		return passwordInput.setCustomValidity('missing a lowercase letter');
-	}
-
-	if (!password.match(/[A-Z]/g)) {
-		return passwordInput.setCustomValidity('missing a uppercase letter');
-	}
-}
 
 submit.onclick = function(){
 
 	var password = passwordInput.value;
 	var repeatPassword = repeatPasswordInput.value;
 
-	checkRequirements(password);
-
 	if (password !== repeatPassword) {
 		return repeatPasswordInput.setCustomValidity('the password must match');
 	} 
-	
+
+	if(!(nameInput.checkValidity() && passwordInput.checkValidity() 
+		&& repeatPasswordInput.checkValidity() 
+		&& emailInput.checkValidity()))
+	{
+		message.innerHTML = '<div class="alert alert-danger" role="alert">Please complete the form</div>';
+		return;
+	}
 	
 	firebase.auth().createUserWithEmailAndPassword(emailInput.value,password).catch(function(error){
+		return message.innerHTML = '<div class="alert alert-danger" role="alert">' + error.message + '.</div>';
+	});
+
+
+	firebase.auth().currentUser.updateProfile({
+		displayName : nameInput.value
+	}).then(function(){
+		setTimeout(function(){
+			self.location.href = 'app.html';
+		},1500);
+	});
 		
-	});
 
-	firebase.auth().onAuthStateChanged(function(user){
-		if(user){
-			user.updateProfile({
-				displayName : nameInput.value
-			}).then(function(){
-				message.innerHTML = '<div class="alert alert-success" role="alert">Success</div>';
-				setTimeout(function(){
-					self.location.href = 'app.html';
-				},1500);
-			});
-		}else{
-			message.innerHTML = '<div class="alert alert-danger" role="alert">Failed,please try again</div>';
-		}
-	});
 
+	message.innerHTML = '<div class="alert alert-success" role="alert">Success</div>';
+	return;
+	self.location.href = 'app.html';
 
 };

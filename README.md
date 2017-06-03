@@ -21,7 +21,7 @@ $ gulp
 
 ## Web Pages
 
-**index.html**: login
-**signup.html**: register
-**app.html**: display and creating plans
+- **index.html**: login
+- **signup.html**: register
+- **app.html**: display and creating plans
 

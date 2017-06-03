@@ -11,6 +11,8 @@ Meet up event planner is a web app for creating events with features as:
 ## Install the node package & Building & Test
 
  ```
+$ git clone https://github.com/wolegechu/Meet-Up-Event-Planner.git
+$ cd Meet-Up-Event-Planner
 $ npm install
 $ gulp
  ```
@@ -24,4 +26,3 @@ $ gulp
 - **index.html**: login
 - **signup.html**: register
 - **app.html**: display and creating plans
-
